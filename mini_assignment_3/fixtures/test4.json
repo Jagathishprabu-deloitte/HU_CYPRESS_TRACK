@@ -1,0 +1,8 @@
+{
+    "firstname":"FirstName",
+    "lastname":"LastName",
+    "email":"email@gmail.com",
+    "age":20,
+    "salary":10000,
+    "department":"SDET"
+}
