@@ -1,0 +1,10 @@
+{
+    "laptop" : ["Sony vaio i5","MacBook air"],
+    "monitor" : ["Apple monitor 24","ASUS Full HD"],
+    "name" : "name",
+    "country" : "country",
+    "city" : "city",
+    "card" : 100,
+    "month" : 10,
+    "year" : 10
+}

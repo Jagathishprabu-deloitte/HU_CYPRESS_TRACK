@@ -1,0 +1,17 @@
+{
+    "laptop" : ["Sony vaio i5","MacBook air"],
+    "monitor" : ["Apple monitor 24","ASUS Full HD"],
+    "phone" : ["Samsung galaxy s6","Nexus 6"],
+    "emptyname" : "",
+    "emptycountry" : "",
+    "emptycity" : "",
+    "emptycard" : "",
+    "emptymonth" : "",
+    "emptyyear" : "",
+    "name" : "name",
+    "country" : "country",
+    "city" : "city",
+    "card" : 100,
+    "month" : 10,
+    "year" : 10
+}

@@ -1,0 +1,10 @@
+{
+    "incorrectuser": "newuser123445",
+    "username":"registereduser",
+    "password":"registereduser",
+    "emptyusername": "",
+    "emptypassword": "",
+    "csusername": "Registereduser",
+    "cspassword": "Registereduser",
+    "welcomename": "#nameofuser"
+}
