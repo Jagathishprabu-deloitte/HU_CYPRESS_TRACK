@@ -36,7 +36,7 @@ Cypress.Commands.add('signUpCommand', (signUpButton1,usernameInput,passwordInput
         cy.get(passwordInput).type(password,{force:true})
     }
     cy.get(signUpButton2).click()
-    cy.wait(3000)
+    cy.wait(1000)
 })
 
 Cypress.Commands.add('loginCommand', (loginButton1,usernameInput,passwordInput,loginButton2,username,password) => { 
@@ -48,7 +48,7 @@ Cypress.Commands.add('loginCommand', (loginButton1,usernameInput,passwordInput,l
         cy.get(passwordInput).type(password,{force:true})
     }
     cy.get(loginButton2).click()
-    cy.wait(3000)
+    cy.wait(1000)
 })
 
 Cypress.Commands.add('laptopCommand', (laptopButton,productTable,productButton1,addToCart,productButton2,homeButton,laptopName) => { 
@@ -59,18 +59,11 @@ Cypress.Commands.add('laptopCommand', (laptopButton,productTable,productButton1,
         cy.wait(1000)
         cy.get(addToCart).click()
         cy.wait(1000)
-        cy.on('window:alert',(str)=>{
-            expect(str).to.equal('Product added.').end()
-        })
-        cy.wait(1000)
-        cy.get(homeButton).click({force : true})
-        cy.wait(1000)
     })
 })
 
 Cypress.Commands.add('placeOrderCommand', (placeOrderButton,nameInput,countryInput,cityInput,
     cardInput,monthInput,yearInput,purchaseButton,name,country,city,card,month,year) => { 
-    cy.get(placeOrderButton).click()
     cy.wait(1000)
     if(name!=""){
         cy.get(nameInput).type(name,{force:true})
@@ -114,12 +107,6 @@ Cypress.Commands.add('monitorCommand', (monitorButton,productTable,productButton
         cy.wait(1000)
         cy.get(addToCart).click()
         cy.wait(1000)
-        cy.on('window:alert',(str)=>{
-            expect(str).to.equal('Product added.').end()
-        })
-        cy.wait(1000)
-        cy.get(homeButton).click({force : true})
-        cy.wait(1000)
     })
 })
 
@@ -131,34 +118,36 @@ Cypress.Commands.add('phoneCommand', (phoneButton,productTable,productButton1,ad
         cy.wait(1000)
         cy.get(addToCart).click()
         cy.wait(1000)
-        cy.on('window:alert',(str)=>{
-            expect(str).to.equal('Product added.').end()
-        })
-        cy.wait(1000)
-        cy.get(homeButton).click({force : true})
-        cy.wait(1000)
     })
 })
 
-Cypress.Commands.add('cartValidateCommand', (cartButton) => { 
+Cypress.Commands.add('cartValidateCommand', (cartButton,addRow,total) => { 
     var amount = 0
     cy.get(cartButton).click()
-    cy.wait(3000)
-    cy.get('td:nth-child(3)').each(($ele)=>{
+    cy.wait(6000)
+    cy.get(addRow).each(($ele)=>{
         cy.log($ele.text())
         amount += parseInt($ele.text())
         cy.log(amount)
     }).then(() =>{
-        cy.get('#totalp').invoke('text').then(parseInt).should('equal',amount)
+        cy.get(total).invoke('text').then(parseInt).should('equal',amount)
     })
 })
 
 
-Cypress.Commands.add('deleteCommand', (productname,homeButton) => { 
-    cy.wait(3000)
-    cy.get('#tbodyid').contains('> tr',productname).then(tableRow =>{
-        cy.get(tableRow).find(' > td >a').click({force : true})
+Cypress.Commands.add('deleteCommand', (productname,homeButton,table,row,data) => { 
+    cy.wait(6000)
+    cy.get(table).contains(row,productname).then(tableRow =>{
+        cy.get(tableRow).find(data).click({force : true})
     })
     cy.wait(1000)
     cy.get(homeButton).click()
+})
+
+Cypress.Commands.add('homePageCommand', (homeButton) => { 
+    cy.get(homeButton).click({force : true})
+})
+
+Cypress.Commands.add('orderCommand', (orderButton) => { 
+    cy.get(orderButton).click({force : true})
 })
